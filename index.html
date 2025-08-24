@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Qr Coder</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+    <script type="text/javascript" src="https://unpkg.com/qr-code-styling@1.5.0/lib/qr-code-styling.js"></script>
+</head>
+
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="saved-designs"><i class="fa-solid fa-qrcode"></i></div>
+            <div class="close-btn">✕</div>
+        </div>
+        <div class="left-panel">
+            <div id="qrCanvas"></div>
+            <button id="download-btn"><i class="fa-solid fa-download"></i></button>
+        </div>
+        <div class="right-panel">
+            <div class="options-section">
+                <div class="section-header">
+                    <span class="section-title">FRAME</span>
+                </div>
+                <div class="options-grid" id="frame-options">
+                    <div class="option-item" data-style="connectHorizontal">
+                        <img src="./imgs/connect-horizontal.png" alt="Frame 1">
+                    </div>
+                    <div class="option-item" data-style="default"><img src="./imgs/classy.png" alt="Frame 2"></div>
+                    <div class="option-item" data-style="dots">
+                        <img src="./imgs/dots.png" alt="Frame 3">
+                    </div>
+                    <div class="option-item" data-style="roundedFirst"><img src="./imgs/extra-rounded.png"
+                            alt="Frame 4"></div>
+                    <div class="option-item" data-style="roundedSecond"><img src="./imgs/rounded.png" alt="Frame 5">
+                    </div>
+                    <div class="option-item" data-style="square"><img src="./imgs/square.png" alt="Frame 6"></div>
+                </div>
+            </div>
+            <div class="options-section">
+                <div class="section-header">
+                    <span class="section-title">QR CODE</span>
+                </div>
+                <div class="options-grid" id="qr-style-options">
+                    <div class="option-item active"><img src="./imgs/square.png" alt="QR Style 1"></div>
+                </div>
+                <div class="color-picker">
+                    <div class="color-picker-container">
+                        <label for="dots-color">Dots Color</label>
+                        <input type="color" id="dots-color" value="#000000">
+                    </div>
+                    <div class="color-picker-container">
+                        <label for="corner-square-color">Corner-Square Color</label>
+                        <input type="color" id="corner-square-color" value="#000000">
+                    </div>
+                    <div class="color-picker-container">
+                        <label for="corner-dots-color">Corner-Dots Color</label>
+                        <input type="color" id="corner-dots-color" value="#000000">
+                    </div>
+                    <div class="color-picker-container">
+                        <label for="background-color">Background Color</label>
+                        <input type="color" id="background-color" value="#000000">
+                    </div>
+                </div>
+            </div>
+            <div class="options-section">
+                <div class="section-header">
+                    <span class="section-title">LOGO <i class="fa-solid fa-images"></i></span>
+                </div>
+                <div class="options-grid" id="logo-options">
+                    <div class="option-item active"><i class="fa-solid fa-ban"></i></div>
+                    <div class="option-item"><i class="fa-solid fa-upload"></i></div>
+                </div>
+            </div>
+            <div class="options-section">
+                <div class="section-header">
+                    <span class="section-title">URL <i class="fa-solid fa-link"></i></span>
+                </div>
+                <div class="short-url-container">
+                    <input id="url-input" type="text" placeholder="Enter you URL">
+                    <span class="edit-icon">✏️</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="app.js" type="module"></script>
+    <script src="consts.js" type="module"></script>
+</body>
+
+</html>
