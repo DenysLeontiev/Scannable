@@ -17,6 +17,7 @@ let logoUploadInput = elements.imageUploadInput;
 let removeImageButton = elements.removeUploadImage;
 
 buildAndDisplayQrCode(defaultQrCodeConfiguration, qrCanvasElement);
+populateUrlInputElementWithIntialUrl();
 
 document.querySelectorAll('#frame-options .option-item').forEach((option) => {
     option.addEventListener('click', () => {
@@ -170,3 +171,7 @@ logoUploadInput.addEventListener('change', (event) => {
         });
     }
 });
+
+function populateUrlInputElementWithIntialUrl() {
+    urlInputElement.value = window.location.href;
+}
