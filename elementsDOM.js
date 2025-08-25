@@ -10,3 +10,6 @@ export const cornerDotsColorInputElement = document.getElementById('corner-dots-
 export const downloadButton = document.getElementById('download-btn');
 
 export const extensionSelector = document.getElementById('extension-selector');
+
+export const imageUploadInput = document.getElementById('image-upload');
+export const removeUploadImage = document.getElementById('remove-image-button');

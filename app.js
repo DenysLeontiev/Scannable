@@ -13,6 +13,9 @@ let downloadButton = elements.downloadButton;
 
 let extensionSelector = elements.extensionSelector;
 
+let logoUploadInput = elements.imageUploadInput;
+let removeImageButton = elements.removeUploadImage;
+
 buildAndDisplayQrCode(defaultQrCodeConfiguration, qrCanvasElement);
 
 document.querySelectorAll('#frame-options .option-item').forEach((option) => {
@@ -79,6 +82,15 @@ function onCornerSquareStyleSelected(element, style) {
     });
 }
 
+document.querySelectorAll('#logo-options .option-item').forEach((option) => {
+    option.addEventListener('click', () => {
+        document.querySelectorAll('#logo-options .option-item').forEach((item) => {
+            item.classList.remove('active');
+        });
+        option.classList.add('active');
+    });
+});
+
 urlInputElement.addEventListener('input', () => {
     let value = urlInputElement.value;
     if (value) {
@@ -139,4 +151,22 @@ extensionSelector.addEventListener('change', function () {
 downloadButton.addEventListener('click', () => {
     let qrCodeExtension = qrCode._options.type;
     qrCode.download({ extension: qrCodeExtension });
+});
+
+removeImageButton.addEventListener('click', () => {
+    qrCode.update({
+        image: undefined
+    });
+});
+
+logoUploadInput.addEventListener('change', (event) => {
+    const file = event.target.files[0];
+
+    if (file) {
+        const imageUrl = URL.createObjectURL(file);
+
+        qrCode.update({
+            image: imageUrl
+        });
+    }
 });
