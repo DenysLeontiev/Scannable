@@ -8,3 +8,5 @@ export const cornerSquareColorInputElement = document.getElementById('corner-squ
 export const cornerDotsColorInputElement = document.getElementById('corner-dots-color');
 
 export const downloadButton = document.getElementById('download-btn');
+
+export const extensionSelector = document.getElementById('extension-selector');

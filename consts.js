@@ -18,10 +18,12 @@ export const qrCornerDotsStyling = {
     extraRounded: "extra-rounded",
 };
 
+export const defaultQrCodeExtension = "jpg";
+
 export const defaultQrCodeConfiguration = {
     width: 300,
     height: 300,
-    type: "svg",
+    type: defaultQrCodeExtension,
     data: window.location.href,
     dotsOptions: {
         color: "#000000ff",

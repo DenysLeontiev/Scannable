@@ -14,11 +14,21 @@
     <div class="container">
         <div class="header">
             <div class="saved-designs"><i class="fa-solid fa-qrcode"></i></div>
-            <div class="close-btn">✕</div>
         </div>
         <div class="left-panel">
             <div id="qrCanvas"></div>
-            <button id="download-btn"><i class="fa-solid fa-download"></i></button>
+            <div class="left-panel-buttons">
+                <div class="extension-selector-container">
+                    <label for="extension-selector">Extension:</label>
+                    <select id="extension-selector">
+                        <option value="jpeg">jpg</option>
+                        <option value="svg">svg</option>
+                        <option value="png">png</option>
+                        <option value="webp">webp</option>
+                    </select>
+                </div>
+                <button id="download-btn"><i class="fa-solid fa-download"></i> Download</button>
+            </div>
         </div>
         <div class="right-panel">
             <div class="options-section">

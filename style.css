@@ -32,12 +32,6 @@ body {
     cursor: pointer;
 }
 
-.header .close-btn {
-    font-size: 24px;
-    cursor: pointer;
-}
-
-/* Left Panel */
 .left-panel {
     flex: 1;
     padding: 20px;
@@ -54,13 +48,23 @@ body {
     border: 1px solid #eee;
     padding: 10px;
     border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+    background-color: white;
+}
+
+.left-panel-buttons {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    gap: 15px;
+    align-items: center;
 }
 
 #download-btn {
     background-color: #00a0f0;
     color: white;
     border: none;
-    padding: 15px 30px;
+    padding: 12px 25px;
     font-size: 16px;
     font-weight: bold;
     border-radius: 25px;
@@ -68,6 +72,18 @@ body {
     width: 80%;
     max-width: 250px;
     text-align: center;
+    transition: all 0.3s ease;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    box-shadow: 0 4px 6px rgba(0, 160, 240, 0.2);
+}
+
+#download-btn:hover {
+    background-color: #0088d1;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 8px rgba(0, 160, 240, 0.3);
 }
 
 /* Right Panel */
@@ -191,6 +207,11 @@ body {
         padding: 15px;
         box-sizing: border-box;
     }
+    
+    .left-panel-buttons {
+        flex-direction: column;
+        width: 100%;
+    }
 }
 
 @media (max-width: 480px) {
@@ -215,7 +236,22 @@ body {
     #download-btn {
         width: 100%;
         max-width: 100%;
-        padding: 12px;
+        padding: 10px 15px;
+        font-size: 14px;
+    }
+    
+    .extension-selector-container {
+        width: 100%;
+        max-width: 100%;
+        padding: 10px;
+        flex-direction: row;
+        flex-wrap: wrap;
+    }
+    
+    #extension-selector {
+        min-width: 70px;
+        padding: 6px 10px;
+        font-size: 13px;
     }
 
     .options-grid {
@@ -232,4 +268,53 @@ body {
         align-items: flex-start;
         gap: 8px;
     }
+}
+
+/* Extension Selector Styles */
+.extension-selector-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    width: 80%;
+    max-width: 250px;
+    background-color: #f8f9fa;
+    padding: 12px 15px;
+    border-radius: 15px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    border: 1px solid #e0e0e0;
+    transition: all 0.3s ease;
+}
+
+.extension-selector-container:hover {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-color: #ccc;
+}
+
+.extension-selector-container label {
+    font-weight: 500;
+    color: #555;
+    font-size: 14px;
+}
+
+#extension-selector {
+    padding: 8px 12px;
+    border-radius: 8px;
+    border: 1px solid #ddd;
+    background-color: white;
+    color: #333;
+    font-size: 14px;
+    outline: none;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    flex-grow: 1;
+}
+
+#extension-selector:hover, #extension-selector:focus {
+    border-color: #00a0f0;
+}
+
+#extension-selector option {
+    padding: 8px;
+    background-color: white;
 }

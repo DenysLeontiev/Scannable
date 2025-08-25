@@ -11,6 +11,8 @@ let cornerSquareColorInputElement = elements.cornerSquareColorInputElement;
 let cornerDotsColorInputElement = elements.cornerDotsColorInputElement;
 let downloadButton = elements.downloadButton;
 
+let extensionSelector = elements.extensionSelector;
+
 buildAndDisplayQrCode(defaultQrCodeConfiguration, qrCanvasElement);
 
 document.querySelectorAll('#frame-options .option-item').forEach((option) => {
@@ -126,6 +128,15 @@ cornerDotsColorInputElement.addEventListener('input', () => {
     });
 });
 
+extensionSelector.addEventListener('change', function () {
+    const selectedValue = this.value;
+
+    qrCode.update({
+        type: selectedValue
+    });
+});
+
 downloadButton.addEventListener('click', () => {
-    qrCode.download();
+    let qrCodeExtension = qrCode._options.type;
+    qrCode.download({ extension: qrCodeExtension });
 });
