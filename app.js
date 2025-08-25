@@ -1,50 +1,17 @@
-import { qrFramesStyling } from './consts.js'
+import { qrFramesStyling, defaultQrCodeConfiguration } from './consts.js'
+import { buildAndDisplayQrCode, qrCode } from './qrCode.js'
+import * as elements from './elementsDOM.js';
 
-const qrCanvasElement = document.getElementById('qrCanvas');
-const urlInputElement = document.getElementById('url-input');
+let qrCanvasElement = elements.qrCanvasElement;
+let urlInputElement = elements.urlInputElement;
 
-const dotsColorInputElement = document.getElementById('dots-color');
-const backgroundColorInputElement = document.getElementById('background-color');
-const cornerSquareColorInputElement = document.getElementById('corner-square-color');
-const cornerDotsColorInputElement = document.getElementById('corner-dots-color');
+let dotsColorInputElement = elements.dotsColorInputElement;
+let backgroundColorInputElement = elements.backgroundColorInputElement;
+let cornerSquareColorInputElement = elements.cornerSquareColorInputElement;
+let cornerDotsColorInputElement = elements.cornerDotsColorInputElement;
+let downloadButton = elements.downloadButton;
 
-const downloadButton = document.getElementById('download-btn');
-
-let qrCode = null;
-
-const qrCodeOptions = {
-    width: 300,
-    height: 300,
-    type: "svg",
-    data: "www.spohady.com/home",
-    // image: "https://upload.wikimedia.org/wikipedia/commons/5/51/Facebook_f_logo_%282019%29.svg",
-    dotsOptions: {
-        color: "#000000ff",
-        type: "rounded"
-    },
-    cornersSquareOptions: {
-        color: "#00BCD4",
-        type: "extra-rounded",
-    },
-    cornersDotOptions: {
-        color: "#00BCD4",
-        type: "dot",
-    },
-    backgroundOptions: {
-        color: "#FFFFFF",
-    },
-    imageOptions: {
-        crossOrigin: "anonymous",
-        margin: 20
-    }
-};
-
-initializeQrCode();
-
-function initializeQrCode() {
-    qrCode = new QRCodeStyling(qrCodeOptions);
-    qrCode.append(qrCanvasElement);
-}
+buildAndDisplayQrCode(defaultQrCodeConfiguration, qrCanvasElement);
 
 document.querySelectorAll('#frame-options .option-item').forEach((option) => {
     option.addEventListener('click', () => {
@@ -117,6 +84,6 @@ cornerDotsColorInputElement.addEventListener('input', () => {
     });
 });
 
-downloadButton.addEventListener('click', () => {
+downloadButton.addEventListener('click', () => {    
     qrCode.download();
 });

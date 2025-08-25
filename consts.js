@@ -6,3 +6,29 @@ export const qrFramesStyling = {
     roundedSecond: "classy-rounded",
     square: "square",
 }
+
+export const defaultQrCodeConfiguration = {
+    width: 300,
+    height: 300,
+    type: "svg",
+    data: window.location.href,
+    dotsOptions: {
+        color: "#000000ff",
+        type: "rounded"
+    },
+    cornersDotOptions: {
+        color: "#000000ff",
+        type: "dot",
+    },
+    cornersSquareOptions: {
+        color: "#000000ff",
+        type: "extra-rounded",
+    },
+    backgroundOptions: {
+        color: "#ffffffff",
+    },
+    imageOptions: {
+        crossOrigin: "anonymous",
+        margin: 20
+    }
+}
