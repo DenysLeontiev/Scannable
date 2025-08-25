@@ -1,4 +1,4 @@
-import { qrFramesStyling, defaultQrCodeConfiguration } from './consts.js'
+import { qrFramesStyling, qrDotsStyling, qrCornerDotsStyling, defaultQrCodeConfiguration } from './consts.js'
 import { buildAndDisplayQrCode, qrCode } from './qrCode.js'
 import * as elements from './elementsDOM.js';
 
@@ -16,11 +16,11 @@ buildAndDisplayQrCode(defaultQrCodeConfiguration, qrCanvasElement);
 document.querySelectorAll('#frame-options .option-item').forEach((option) => {
     option.addEventListener('click', () => {
         const dataStyle = option.getAttribute('data-style');
-        onDotsStyleSelected(option, dataStyle);
+        onQrCodeStyleSelected(option, dataStyle);
     });
 });
 
-function onDotsStyleSelected(element, style) {
+function onQrCodeStyleSelected(element, style) {
 
     document.querySelectorAll('#frame-options .option-item').forEach((item) => {
         item.classList.remove('active');
@@ -31,6 +31,48 @@ function onDotsStyleSelected(element, style) {
     qrCode.update({
         dotsOptions: {
             type: qrFramesStyling[style]
+        }
+    });
+}
+
+document.querySelectorAll('#qr-dots-options .option-item').forEach((option) => {
+    option.addEventListener('click', () => {
+        const dataStyle = option.getAttribute('data-style');
+        onDotsStyleSelected(option, dataStyle);
+    });
+});
+
+function onDotsStyleSelected(element, style) {
+    document.querySelectorAll('#qr-dots-options .option-item').forEach((item) => {
+        item.classList.remove('active');
+    });
+
+    element.classList.add('active');
+
+    qrCode.update({
+        cornersDotOptions: {
+            type: qrDotsStyling[style]
+        }
+    });
+}
+
+document.querySelectorAll('#qr-corners-options .option-item').forEach((option) => {
+    option.addEventListener('click', () => {
+        const dataStyle = option.getAttribute('data-style');
+        onCornerSquareStyleSelected(option, dataStyle);
+    });
+});
+
+function onCornerSquareStyleSelected(element, style) {
+    document.querySelectorAll('#qr-corners-options .option-item').forEach((item) => {
+        item.classList.remove('active');
+    });
+
+    element.classList.add('active');
+
+    qrCode.update({
+        cornersSquareOptions: {
+            type: qrCornerDotsStyling[style]
         }
     });
 }
@@ -84,6 +126,6 @@ cornerDotsColorInputElement.addEventListener('input', () => {
     });
 });
 
-downloadButton.addEventListener('click', () => {    
+downloadButton.addEventListener('click', () => {
     qrCode.download();
 });
