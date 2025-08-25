@@ -29,11 +29,11 @@ export const defaultQrCodeConfiguration = {
     },
     cornersDotOptions: {
         color: "#000000ff",
-        type: "dot",
+        type: "square",
     },
     cornersSquareOptions: {
         color: "#000000ff",
-        type: "extra-rounded",
+        type: "square",
     },
     backgroundOptions: {
         color: "#ffffffff",
