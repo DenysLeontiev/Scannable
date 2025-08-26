@@ -42,6 +42,8 @@ export const defaultQrCodeConfiguration = {
     },
     imageOptions: {
         crossOrigin: "anonymous",
-        margin: 5
+        margin: 5,
+        hideBackgroundDots: true,
+        imageSize: 0.5
     }
 }

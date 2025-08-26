@@ -13,3 +13,6 @@ export const extensionSelector = document.getElementById('extension-selector');
 
 export const imageUploadInput = document.getElementById('image-upload');
 export const removeUploadImage = document.getElementById('remove-image-button');
+
+export const sliderContainerElement = document.getElementById('image-slider-container');
+export const logoSliderElement = document.getElementById('logo-slider');

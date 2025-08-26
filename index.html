@@ -31,16 +31,6 @@
                 </div>
                 <button id="download-btn"><i class="fa-solid fa-download"></i> Download</button>
             </div>
-            <!-- Google AdSense Horizontal Responsive (inside left-panel) -->
-            <div style="width:100%; margin-top:16px;">
-                <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7519900387651658"
-                    crossorigin="anonymous"></script>
-                <ins class="adsbygoogle" style="display:block;width:100%;" data-ad-client="ca-pub-7519900387651658" data-ad-slot="7624074579"
-                    data-ad-format="auto" data-full-width-responsive="true"></ins>
-                <script>
-                    (adsbygoogle = window.adsbygoogle || []).push({});
-                </script>
-            </div>
         </div>
         <div class="right-panel">
             <div class="options-section">
@@ -127,6 +117,12 @@
                         </label>
                     </div>
                 </div>
+                <div class="slider-container" id="image-slider-container">
+                    <label for="logo-slider" class="slider-label">Logo Size</label>
+                    <div class="slider-wrapper">
+                        <input type="range" min="0.1" max="1" step="0.01" value="0.5" class="slider" id="logo-slider">
+                    </div>
+                </div>
             </div>
             <div class="options-section">
                 <div class="section-header">
@@ -143,5 +139,7 @@
     <script src="consts.js" type="module"></script>
     <script src="elementsDOM.js" type="module"></script>
     <script src="qrCode.js" type="module"></script>
+    <script src="helpers.js" type="module"></script>
 </body>
+
 </html>

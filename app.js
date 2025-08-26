@@ -1,5 +1,6 @@
 import { qrFramesStyling, qrDotsStyling, qrCornerDotsStyling, defaultQrCodeConfiguration } from './consts.js'
 import { buildAndDisplayQrCode, qrCode } from './qrCode.js'
+import { showElement, hideElement } from './helpers.js';
 import * as elements from './elementsDOM.js';
 
 let qrCanvasElement = elements.qrCanvasElement;
@@ -15,6 +16,9 @@ let extensionSelector = elements.extensionSelector;
 
 let logoUploadInput = elements.imageUploadInput;
 let removeImageButton = elements.removeUploadImage;
+
+let sliderContainerElement = elements.sliderContainerElement;
+let logoSliderElement = elements.logoSliderElement;
 
 buildAndDisplayQrCode(defaultQrCodeConfiguration, qrCanvasElement);
 populateUrlInputElementWithIntialUrl();
@@ -155,6 +159,7 @@ downloadButton.addEventListener('click', () => {
 });
 
 removeImageButton.addEventListener('click', () => {
+    hideElement(sliderContainerElement);
     qrCode.update({
         image: undefined
     });
@@ -164,6 +169,7 @@ logoUploadInput.addEventListener('change', (event) => {
     const file = event.target.files[0];
 
     if (file) {
+        showElement(sliderContainerElement);
         const imageUrl = URL.createObjectURL(file);
 
         qrCode.update({
@@ -172,6 +178,18 @@ logoUploadInput.addEventListener('change', (event) => {
     }
 });
 
+logoSliderElement.addEventListener('input', (event) => {
+    let sliderValue = event.target.value;
+
+    qrCode.update({
+        imageOptions: {
+            imageSize: sliderValue
+        }
+    });
+});
+
 function populateUrlInputElementWithIntialUrl() {
     urlInputElement.value = window.location.href;
 }
+
+hideElement(sliderContainerElement);
