@@ -17,8 +17,11 @@ let extensionSelector = elements.extensionSelector;
 let logoUploadInput = elements.imageUploadInput;
 let removeImageButton = elements.removeUploadImage;
 
-let sliderContainerElement = elements.sliderContainerElement;
+let imageSliderContainerElement = elements.imageSliderContainerElement;
 let logoSliderElement = elements.logoSliderElement;
+
+let marginSliderContainerElement = elements.marginSliderContainerElement;
+let marginSliderElement = elements.marginSliderElement;
 
 buildAndDisplayQrCode(defaultQrCodeConfiguration, qrCanvasElement);
 populateUrlInputElementWithIntialUrl();
@@ -159,7 +162,8 @@ downloadButton.addEventListener('click', () => {
 });
 
 removeImageButton.addEventListener('click', () => {
-    hideElement(sliderContainerElement);
+    hideElement(imageSliderContainerElement);
+    hideElement(marginSliderContainerElement);
     qrCode.update({
         image: undefined
     });
@@ -169,7 +173,8 @@ logoUploadInput.addEventListener('change', (event) => {
     const file = event.target.files[0];
 
     if (file) {
-        showElement(sliderContainerElement);
+        showElement(imageSliderContainerElement);
+        showElement(marginSliderContainerElement);
         const imageUrl = URL.createObjectURL(file);
 
         qrCode.update({
@@ -188,8 +193,19 @@ logoSliderElement.addEventListener('input', (event) => {
     });
 });
 
+marginSliderElement.addEventListener('input', (event) => {
+    let sliderValue = event.target.value;
+
+    qrCode.update({
+        imageOptions: {
+            margin: sliderValue
+        }
+    });
+});
+
 function populateUrlInputElementWithIntialUrl() {
     urlInputElement.value = window.location.href;
 }
 
-hideElement(sliderContainerElement);
+hideElement(imageSliderContainerElement);
+hideElement(marginSliderContainerElement);

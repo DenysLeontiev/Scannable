@@ -14,5 +14,8 @@ export const extensionSelector = document.getElementById('extension-selector');
 export const imageUploadInput = document.getElementById('image-upload');
 export const removeUploadImage = document.getElementById('remove-image-button');
 
-export const sliderContainerElement = document.getElementById('image-slider-container');
+export const imageSliderContainerElement = document.getElementById('image-slider-container');
 export const logoSliderElement = document.getElementById('logo-slider');
+
+export const marginSliderContainerElement = document.getElementById('margin-slider-container');
+export const marginSliderElement = document.getElementById('margin-slider');
