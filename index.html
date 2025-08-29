@@ -6,6 +6,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Qr Coder</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
     <script type="text/javascript" src="https://unpkg.com/qr-code-styling@1.5.0/lib/qr-code-styling.js"></script>
@@ -14,129 +18,134 @@
 <body>
     <div class="container">
         <div class="header">
-            <div class="saved-designs"><i class="fa-solid fa-qrcode"></i></div>
-        </div>
-
-        <div class="left-panel">
-            <div id="qrCanvas"></div>
-            <div class="left-panel-buttons">
-                <div class="extension-selector-container">
-                    <label for="extension-selector">Extension:</label>
-                    <select id="extension-selector">
-                        <option value="jpeg">jpg</option>
-                        <option value="svg">svg</option>
-                        <option value="png">png</option>
-                        <option value="webp">webp</option>
-                    </select>
-                </div>
-                <button id="download-btn"><i class="fa-solid fa-download"></i> Download</button>
+            <div class="logo">
+                <i class="fa-solid fa-qrcode"></i>
+                <h1>Scannable</h1>
             </div>
         </div>
-        <div class="right-panel">
-            <div class="options-section">
-                <div class="section-header">
-                    <span class="section-title">URL <i class="fa-solid fa-link"></i></span>
-                </div>
-                <div class="short-url-container">
-                    <input id="url-input" type="text" placeholder="Enter you URL">
-                    <span class="edit-icon"><i class="fa-solid fa-pencil"></i></span>
-                </div>
-            </div>
-            <div class="options-section">
-                <div class="section-header">
-                    <span class="section-title">FRAME</span>
-                </div>
-                <div class="options-grid" id="frame-options">
-                    <div class="option-item active" data-style="square"><img src="./imgs/qrStyling/square.png"
-                            alt="Square Frame"></div>
-                    <div class="option-item" data-style="dots">
-                        <img src="./imgs/qrStyling/dots.png" alt="Dots Frame">
-                    </div>
-                    <div class="option-item" data-style="connectHorizontal">
-                        <img src="./imgs/qrStyling/connect-horizontal.png" alt="Extra-rounded Frame">
-                    </div>
-                    <div class="option-item" data-style="default"><img src="./imgs/qrStyling/classy.png"
-                            alt="Classy Frame">
-                    </div>
-                    <div class="option-item" data-style="roundedFirst"><img src="./imgs/qrStyling/extra-rounded.png"
-                            alt="Rounded Frame"></div>
-                    <div class="option-item" data-style="roundedSecond"><img src="./imgs/qrStyling/rounded.png"
-                            alt="Classy Rounded Frame">
-                    </div>
-                </div>
-            </div>
-            <div class="options-section">
-                <div class="section-header">
-                    <span class="section-title">Dots</span>
-                </div>
-                <div class="options-grid" id="qr-dots-options">
-                    <div class="option-item active" data-style="square"><img src="./imgs/corner-dots/square.svg"
-                            alt="QR Style 1"></div>
-                    <div class="option-item" data-style="dot"><img src="./imgs/corner-dots/dot.svg" alt="QR Style 1">
-                    </div>
-                </div>
-            </div>
-            <div class="options-section">
-                <div class="section-header">
-                    <span class="section-title">Corners</span>
-                </div>
-                <div class="options-grid" id="qr-corners-options">
-                    <div class="option-item active" data-style="square"><img src="./imgs/corner-square/square.svg"
-                            alt="QR Style 1"></div>
-                    <div class="option-item" data-style="dot"><img src="./imgs/corner-square/dot.svg" alt="QR Style 1">
-                    </div>
-                    <div class="option-item" data-style="extraRounded"><img src="./imgs/corner-square/extra-rounded.svg"
-                            alt="QR Style 1"></div>
-                </div>
-            </div>
-            <div class="options-section">
-                <div class="section-header">
-                    <span class="section-title">Color</span>
-                </div>
-                <div class="color-picker">
-                    <div class="color-picker-container">
-                        <label for="dots-color">Dots</label>
-                        <input type="color" id="dots-color" value="#000000">
-                    </div>
-                    <div class="color-picker-container">
-                        <label for="corner-square-color">Corner-Square</label>
-                        <input type="color" id="corner-square-color" value="#000000">
-                    </div>
-                    <div class="color-picker-container">
-                        <label for="corner-dots-color">Corner-Dots</label>
-                        <input type="color" id="corner-dots-color" value="#000000">
-                    </div>
-                    <div class="color-picker-container">
-                        <label for="background-color">Background</label>
-                        <input type="color" id="background-color" value="#000000">
-                    </div>
-                </div>
-            </div>
-            <div class="options-section">
-                <div class="section-header">
-                    <span class="section-title">LOGO <i class="fa-solid fa-images"></i></span>
-                </div>
-                <div class="options-grid" id="logo-options">
-                    <div class="option-item active" id="remove-image-button"><i class="fa-solid fa-ban"></i></div>
-                    <div class="option-item">
-                        <label for="image-upload"
-                            style="cursor:pointer; margin:0; width:100%; height:100%; display:flex; align-items:center; justify-content:center;">
-                            <i class="fa-solid fa-upload"></i>
-                            <input type="file" id="image-upload" accept="image/*" style="display:none;">
-                        </label>
-                    </div>
-                </div>
-                <div class="slider-container" id="image-slider-container">
-                    <label for="logo-slider" class="slider-label">Logo Size</label>
-                    <div class="slider-wrapper">
-                        <input type="range" min="0.1" max="1" step="0.01" value="0.5" class="slider" id="logo-slider">
-                    </div>
-                </div>
 
-                <div class="slider-container" id="margin-slider-container">
-                    <label for="margin-slider" class="slider-label">Margin</label>
-                    <div class="slider-wrapper">
-                        <input type="range" min="1" max="42" step="1" value="5" class="slider" id="margin-slider">
+        <div class="main-content">
+            <div class="left-panel">
+                <div id="qrCanvas"></div>
+                <div class="left-panel-buttons">
+                    <div class="extension-selector-container">
+                        <label for="extension-selector">Extension:</label>
+                        <select id="extension-selector">
+                            <option value="jpeg">jpg</option>
+                            <option value="svg">svg</option>
+                            <option value="png">png</option>
+                            <option value="webp">webp</option>
+                        </select>
+                    </div>
+                    <button id="download-btn"><i class="fa-solid fa-download"></i> Download</button>
+                </div>
+            </div>
+            <div class="right-panel">
+                <div class="options-section">
+                    <div class="section-header">
+                        <span class="section-title">URL <i class="fa-solid fa-link"></i></span>
+                    </div>
+                    <div class="short-url-container">
+                        <input id="url-input" type="text" placeholder="Enter you URL">
+                        <span class="edit-icon"><i class="fa-solid fa-pencil"></i></span>
+                    </div>
+                </div>
+                <div class="options-section">
+                    <div class="section-header">
+                        <span class="section-title">FRAME</span>
+                    </div>
+                    <div class="options-grid" id="frame-options">
+                        <div class="option-item active" data-style="square"><img src="./imgs/qrStyling/square.png"
+                                alt="Square Frame"></div>
+                        <div class="option-item" data-style="dots">
+                            <img src="./imgs/qrStyling/dots.png" alt="Dots Frame">
+                        </div>
+                        <div class="option-item" data-style="connectHorizontal">
+                            <img src="./imgs/qrStyling/connect-horizontal.png" alt="Extra-rounded Frame">
+                        </div>
+                        <div class="option-item" data-style="default"><img src="./imgs/qrStyling/classy.png"
+                                alt="Classy Frame">
+                        </div>
+                        <div class="option-item" data-style="roundedFirst"><img src="./imgs/qrStyling/extra-rounded.png"
+                                alt="Rounded Frame"></div>
+                        <div class="option-item" data-style="roundedSecond"><img src="./imgs/qrStyling/rounded.png"
+                                alt="Classy Rounded Frame">
+                        </div>
+                    </div>
+                </div>
+                <div class="options-section">
+                    <div class="section-header">
+                        <span class="section-title">Dots</span>
+                    </div>
+                    <div class="options-grid" id="qr-dots-options">
+                        <div class="option-item active" data-style="square"><img src="./imgs/corner-dots/square.svg"
+                                alt="QR Style 1"></div>
+                        <div class="option-item" data-style="dot"><img src="./imgs/corner-dots/dot.svg" alt="QR Style 1">
+                        </div>
+                    </div>
+                </div>
+                <div class="options-section">
+                    <div class="section-header">
+                        <span class="section-title">Corners</span>
+                    </div>
+                    <div class="options-grid" id="qr-corners-options">
+                        <div class="option-item active" data-style="square"><img src="./imgs/corner-square/square.svg"
+                                alt="QR Style 1"></div>
+                        <div class="option-item" data-style="dot"><img src="./imgs/corner-square/dot.svg" alt="QR Style 1">
+                        </div>
+                        <div class="option-item" data-style="extraRounded"><img src="./imgs/corner-square/extra-rounded.svg"
+                                alt="QR Style 1"></div>
+                    </div>
+                </div>
+                <div class="options-section">
+                    <div class="section-header">
+                        <span class="section-title">Color</span>
+                    </div>
+                    <div class="color-picker">
+                        <div class="color-picker-container">
+                            <label for="dots-color">Dots</label>
+                            <input type="color" id="dots-color" value="#000000">
+                        </div>
+                        <div class="color-picker-container">
+                            <label for="corner-square-color">Corner-Square</label>
+                            <input type="color" id="corner-square-color" value="#000000">
+                        </div>
+                        <div class="color-picker-container">
+                            <label for="corner-dots-color">Corner-Dots</label>
+                            <input type="color" id="corner-dots-color" value="#000000">
+                        </div>
+                        <div class="color-picker-container">
+                            <label for="background-color">Background</label>
+                            <input type="color" id="background-color" value="#000000">
+                        </div>
+                    </div>
+                </div>
+                <div class="options-section">
+                    <div class="section-header">
+                        <span class="section-title">LOGO <i class="fa-solid fa-images"></i></span>
+                    </div>
+                    <div class="options-grid" id="logo-options">
+                        <div class="option-item active" id="remove-image-button"><i class="fa-solid fa-ban"></i></div>
+                        <div class="option-item">
+                            <label for="image-upload"
+                                style="cursor:pointer; margin:0; width:100%; height:100%; display:flex; align-items:center; justify-content:center;">
+                                <i class="fa-solid fa-upload"></i>
+                                <input type="file" id="image-upload" accept="image/*" style="display:none;">
+                            </label>
+                        </div>
+                    </div>
+                    <div class="slider-container" id="image-slider-container">
+                        <label for="logo-slider" class="slider-label">Logo Size</label>
+                        <div class="slider-wrapper">
+                            <input type="range" min="0.1" max="1" step="0.01" value="0.5" class="slider" id="logo-slider">
+                        </div>
+                    </div>
+
+                    <div class="slider-container" id="margin-slider-container">
+                        <label for="margin-slider" class="slider-label">Margin</label>
+                        <div class="slider-wrapper">
+                            <input type="range" min="1" max="42" step="1" value="5" class="slider" id="margin-slider">
+                        </div>
                     </div>
                 </div>
             </div>
